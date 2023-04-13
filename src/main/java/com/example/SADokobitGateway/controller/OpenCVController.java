@@ -128,7 +128,7 @@ public class OpenCVController {
             System.out.println("Saving here");
             String resultPath = opencvpath + "/" + "[result]-" + fileName;
             saveImage(loadedImage, resultPath);
-            return "Success store at " + resultPath;
+            return "[result]-" + fileName;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "Error";
@@ -139,7 +139,7 @@ public class OpenCVController {
     public ResponseEntity<?> getResultImage(@RequestParam String fileName) {
         try {
             String opencvpath = System.getProperty("user.dir") + "\\files\\";
-            String filePath = opencvpath + Paths.get("/dokobit-sign-files")
+            String filePath = opencvpath
                     + Paths.get("/" + fileName);
             File file = new File(filePath);
             InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
